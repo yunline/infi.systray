@@ -30,12 +30,14 @@ class SysTrayIcon(object):
                  menu_options=None,
                  on_quit=None,
                  default_menu_index=None,
-                 window_class_name=None):
+                 window_class_name=None,
+                 on_double_click=None):
 
         self._icon = icon
         self._icon_shared = False
         self._hover_text = hover_text
         self._on_quit = on_quit
+        self._on_double_click = on_double_click
 
         menu_options = menu_options or ()
         self._next_action_id = SysTrayIcon.FIRST_ID
@@ -205,7 +207,8 @@ class SysTrayIcon(object):
 
     def _notify(self, hwnd, msg, wparam, lparam):
         if lparam == WM_LBUTTONDBLCLK:
-            self._execute_menu_option(self._default_menu_index + SysTrayIcon.FIRST_ID)
+            if self._on_double_click is not None:
+                self._on_double_click(self)
         elif lparam == WM_RBUTTONUP:
             self._show_menu()
         elif lparam == WM_LBUTTONUP:
