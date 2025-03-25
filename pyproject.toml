@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "infi.systray"
+version = "100.1.0"
+description = "Windows system tray icon"
+readme = "README.md"
+authors = [
+    {name = "Infinidat Ltd."},
+    {name = "Yunline"}
+]
+license = {text = "BSD"}
+classifiers = [
+    "Intended Audience :: Developers",
+    "Intended Audience :: System Administrators",
+    "Operating System :: Microsoft :: Windows",
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: BSD License",
+    "Programming Language :: Python",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+keywords = ["systray", "windows", "tray", "icon"]
+dependencies = [
+    "pywin32; platform_system == 'Windows'",
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["infi*"]
+exclude = ["tests*"]
