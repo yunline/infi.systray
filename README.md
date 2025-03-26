@@ -56,6 +56,7 @@ For usages that are different from the upstream, see **Changes**.
     Originally double-clicking the icon of the systray was equivalent to clicking the first option of the menu.  
     Now you can choose what to do when double-clicking, by setting the `on_double_click` argument
 3. This fork uses `pyproject.toml`. Now you can directly use `pip install .` to install the library.
+4. Now you can choose not to block the thread when using `shutdown` method. Just use `shutdown(join=False)`.
 
 ## Credit
 
